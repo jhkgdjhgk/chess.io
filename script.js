@@ -2,8 +2,10 @@ var board = null;
 var game = new Chess();
 
 function onDragStart(source, piece, position, orientation) {
-    // Prevent movement if game is over or it's not White's turn
-    if (game.game_over() || (game.turn() === 'b' && piece.search(/^w/) !== -1)) {
+    // Prevent movement if the game is over or it's not the player's turn
+    if (game.game_over() || 
+        (game.turn() === 'w' && piece.search(/^b/) !== -1) || 
+        (game.turn() === 'b' && piece.search(/^w/) !== -1)) {
         return false;
     }
 }
@@ -32,7 +34,7 @@ function updateStatus() {
     }
 }
 
-// Initialize board
+// Initialize board (only once)
 var config = {
     draggable: true,
     position: 'start',
