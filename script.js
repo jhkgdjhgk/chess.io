@@ -44,3 +44,5 @@ var config = {
 };
 
 board = Chessboard('board', config);
+console.log(Chessboard);
+console.log(Chess);
